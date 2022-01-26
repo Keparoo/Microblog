@@ -1,7 +1,7 @@
 import React from 'react';
 import './PostDisplay.css';
 
-const PostDisplay = (post) => {
+const PostDisplay = ({ post }) => {
 	console.debug('PostDisplay');
 
 	const { title, description, body } = post;
@@ -9,6 +9,7 @@ const PostDisplay = (post) => {
 	return (
 		<div className="Post">
 			<div>
+				<h2>Post Display</h2>
 				<h2>{title}</h2>
 				<p>
 					<em>{description}</em>
