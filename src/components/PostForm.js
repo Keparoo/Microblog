@@ -7,6 +7,8 @@ const PostForm = ({
 	save,
 	cancel
 }) => {
+	console.debug('PostForm');
+
 	const [ form, setForm ] = useState({
 		title: post.title,
 		description: post.description,
