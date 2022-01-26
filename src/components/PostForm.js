@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 // import uuidv4 from "uuid/v4";
 import './NewPost.css';
 
-const DEFAULT_FORM = {
-	title: '',
-	description: '',
-	body: ''
-};
-
-const PostForm = ({ addPost }) => {
-	const [ form, setForm ] = useState(DEFAULT_FORM);
+const PostForm = ({
+	post = { title: '', description: '', body: '' },
+	save,
+	cancel
+}) => {
+	const [ form, setForm ] = useState({
+		title: post.title,
+		description: post.description,
+		body: post.body
+	});
 
 	function handleChange(e) {
 		const { name, value } = e.target;
@@ -19,13 +21,8 @@ const PostForm = ({ addPost }) => {
 	// addPost({ ...form, id: uuidv4() });
 	function handleSubmit(e) {
 		e.preventDefault();
-		addPost({ ...form });
-		setForm(DEFAULT_FORM);
+		save({ ...form });
 	}
-
-	const cancel = () => {
-		return;
-	};
 
 	return (
 		<div>
