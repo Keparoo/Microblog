@@ -7,13 +7,17 @@ const NewPost = () => {
 
 	const history = useHistory();
 
+	const save = () => {
+		history.push('/');
+	};
+
 	const cancel = () => {
 		history.push('/');
 	};
 
 	return (
 		<div>
-			<PostForm cancel={cancel} />
+			<PostForm save={save} cancel={cancel} />
 		</div>
 	);
 };
