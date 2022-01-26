@@ -1,7 +1,10 @@
 import React from 'react';
 import './App.css';
+import Routes from './Routes';
 
 function App() {
+	console.debug('App');
+
 	return (
 		<div className="App container">
 			<header className="App-header jumbotron mt-2">
@@ -12,6 +15,8 @@ function App() {
 					<a href="/">Add a new post</a>
 				</nav>
 			</header>
+
+			<Routes />
 		</div>
 	);
 }
