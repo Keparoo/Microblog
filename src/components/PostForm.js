@@ -27,49 +27,46 @@ const PostForm = ({
 	}
 
 	return (
-		<div>
-			<h1>New Post</h1>
-			<form className="mb-4" onSubmit={handleSubmit}>
-				<div className="form-group">
-					<label htmlFor="title">Title:</label>
-					<input
-						className="form-control"
-						type="text"
-						name="title"
-						id="title"
-						onChange={handleChange}
-						value={form.title}
-					/>
-				</div>
-				<div className="form-group">
-					<label htmlFor="title">Description:</label>
-					<input
-						className="form-control"
-						type="text"
-						name="description"
-						id="description"
-						onChange={handleChange}
-						value={form.description}
-					/>
-				</div>
-				<div className="form-group">
-					<label htmlFor="title">Body:</label>
-					<input
-						className="form-control"
-						type="textarea"
-						rows={10}
-						name="body"
-						id="body"
-						onChange={handleChange}
-						value={form.body}
-					/>
-				</div>
-				<button className="btn btn-primary mr-2">Save</button>
-				<button onClick={cancel} className="btn btn-secondary">
-					Cancel
-				</button>
-			</form>
-		</div>
+		<form className="mb-4" onSubmit={handleSubmit}>
+			<div className="form-group">
+				<label htmlFor="title">Title:</label>
+				<input
+					className="form-control"
+					type="text"
+					name="title"
+					id="title"
+					onChange={handleChange}
+					value={form.title}
+				/>
+			</div>
+			<div className="form-group">
+				<label htmlFor="title">Description:</label>
+				<input
+					className="form-control"
+					type="text"
+					name="description"
+					id="description"
+					onChange={handleChange}
+					value={form.description}
+				/>
+			</div>
+			<div className="form-group">
+				<label htmlFor="title">Body:</label>
+				<input
+					className="form-control"
+					type="textarea"
+					rows={10}
+					name="body"
+					id="body"
+					onChange={handleChange}
+					value={form.body}
+				/>
+			</div>
+			<button className="btn btn-primary mr-2">Save</button>
+			<button onClick={cancel} className="btn btn-secondary">
+				Cancel
+			</button>
+		</form>
 	);
 };
 

@@ -7,7 +7,8 @@ const NewPost = () => {
 
 	const history = useHistory();
 
-	const save = () => {
+	const add = ({ title, description, body }) => {
+		// save title, description, body
 		history.push('/');
 	};
 
@@ -17,7 +18,8 @@ const NewPost = () => {
 
 	return (
 		<div>
-			<PostForm save={save} cancel={cancel} />
+			<h1 className="display-5">New Post</h1>
+			<PostForm save={add} cancel={cancel} />
 		</div>
 	);
 };

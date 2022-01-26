@@ -1,20 +1,31 @@
-import React from 'react';
-import './Post.css';
+import React, { useState } from 'react';
+import PostForm from './PostForm';
+import PostDisplay from './PostDisplay';
+import { useParams, useHistory } from 'react-router-dom';
 
-const Post = (post) => {
+const Post = () => {
 	console.debug('Post');
 
-	const { title, description, body } = post;
+	const [ isEditing, setIsEditing ] = useState(false);
+	const history = useHistory();
+	const post = '';
+
+	const toggleEdit = () => {
+		setIsEditing((edit) => !edit);
+	};
+
+	// Edit post
+	const edit = () => {
+		return;
+	};
 
 	return (
 		<div className="Post">
-			<div>
-				<h2>{title}</h2>
-				<p>
-					<em>{description}</em>
-				</p>
-				<div>{body}</div>
-			</div>
+			{isEditing ? (
+				<PostForm post={post} save={edit} cancel={toggleEdit} />
+			) : (
+				<PostDisplay />
+			)}
 		</div>
 	);
 };
