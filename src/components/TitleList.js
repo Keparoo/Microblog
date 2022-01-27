@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TitleList.css';
 import { Link } from 'react-router-dom';
 
@@ -6,6 +6,13 @@ const TitleList = () => {
 	console.debug('TitleList');
 
 	const titles = [];
+	const [ isLoading, setIsLoading ] = useState(true);
+
+	if (isLoading) return <b>Loading...</b>;
+
+	if (!isLoading && titles.length === 0) {
+		return <b>No posts yet. Please add a post!</b>;
+	}
 
 	return (
 		<div className="row">
