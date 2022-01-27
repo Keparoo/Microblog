@@ -40,7 +40,7 @@ const PostForm = ({
 				/>
 			</div>
 			<div className="form-group">
-				<label htmlFor="title">Description:</label>
+				<label htmlFor="description">Description:</label>
 				<input
 					className="form-control"
 					type="text"
@@ -51,10 +51,9 @@ const PostForm = ({
 				/>
 			</div>
 			<div className="form-group">
-				<label htmlFor="title">Body:</label>
-				<input
+				<label htmlFor="body">Body:</label>
+				<textarea
 					className="form-control"
-					type="textarea"
 					rows={10}
 					name="body"
 					id="body"

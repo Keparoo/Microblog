@@ -19,6 +19,11 @@ const Post = () => {
 		setIsEditing((edit) => !edit);
 	};
 
+	const deletePost = () => {
+		//remove post from API
+		history.push('/');
+	};
+
 	// Edit post
 	const edit = () => {
 		return;
@@ -30,7 +35,11 @@ const Post = () => {
 			{isEditing ? (
 				<PostForm post={post} save={edit} cancel={toggleEdit} />
 			) : (
-				<PostDisplay post={post} />
+				<PostDisplay
+					post={post}
+					toggleEdit={toggleEdit}
+					deletePost={deletePost}
+				/>
 			)}
 		</div>
 	);
