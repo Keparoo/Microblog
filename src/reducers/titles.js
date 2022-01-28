@@ -1,4 +1,9 @@
-import { FETCH_TITLES } from '../actions/types';
+import {
+	FETCH_TITLES,
+	REMOVE_POST,
+	ADD_POST,
+	UPDATE_POST
+} from '../actions/types';
 
 export default function rootReducer(state = [], action) {
 	switch (action.type) {

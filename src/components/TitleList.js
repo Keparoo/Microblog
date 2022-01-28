@@ -28,7 +28,6 @@ const TitleList = () => {
 	if (isLoading) return <b>Loading...</b>;
 
 	if (!isLoading && titles.length === 0) {
-		console.log('Titles', titles);
 		return <b>No posts yet. Please add a post!</b>;
 	}
 

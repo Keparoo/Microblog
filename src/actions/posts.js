@@ -1,0 +1,21 @@
+import axios from 'axios';
+
+import { REMOVE_POST, ADD_POST, UPDATE_POST, FETCH_POST } from './types';
+
+const API_URL =
+	process.env.REACT_APP_API_URL || 'http://localhost:5000/api/posts';
+
+export function getPostFromAPI(id) {
+	return async function(dispatch) {
+		const response = await axios.get(`${API_URL}/${id}`);
+		console.log('resp', response.data);
+		return dispatch(getPost(response.data));
+	};
+}
+
+function getPost(post) {
+	return {
+		type: FETCH_POST,
+		post
+	};
+}
