@@ -9,7 +9,6 @@ const PostDisplay = ({ post, toggleEdit, deletePost }) => {
 	return (
 		<div className="PostDisplay">
 			<div>
-				<h2>Post Display</h2>
 				<h2>{title}</h2>
 				<p>
 					<em>{description}</em>
