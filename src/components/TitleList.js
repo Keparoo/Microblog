@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './TitleList.css';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchTitlesFromAPI } from '../actions/titles';
 
 const TitleList = () => {
 	console.debug('TitleList');
 
-	const titles = [];
+	const titles = useSelector((st) => st.titles);
+	const dispatch = useDispatch();
 	const [ isLoading, setIsLoading ] = useState(true);
+
+	useEffect(
+		function() {
+			async function fetchTitle() {
+				await dispatch(fetchTitlesFromAPI());
+				setIsLoading(false);
+			}
+
+			if (isLoading) {
+				fetchTitle();
+			}
+		},
+		[ dispatch, isLoading ]
+	);
 
 	if (isLoading) return <b>Loading...</b>;
 
 	if (!isLoading && titles.length === 0) {
+		console.log('Titles', titles);
 		return <b>No posts yet. Please add a post!</b>;
 	}
 
