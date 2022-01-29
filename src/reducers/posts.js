@@ -11,10 +11,10 @@ export default function rootReducer(state = {}, action) {
 
 	switch (action.type) {
 		case FETCH_POST:
-			console.log('in Fetch');
 			return { ...state, [action.post.id]: action.post };
 		case ADD_POST:
-			console.log('in ADD');
+			return { ...state, [action.post.id]: { ...action.post } };
+		case UPDATE_POST:
 			return { ...state, [action.post.id]: { ...action.post } };
 		default:
 			return state;

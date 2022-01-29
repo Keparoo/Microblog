@@ -44,8 +44,9 @@ const Post = () => {
 	};
 
 	// Edit post
-	const edit = () => {
-		return;
+	const edit = ({ title, description, body }) => {
+		dispatch(updatePostInAPI(postId, title, description, body));
+		toggleEdit();
 	};
 
 	if (!post) return <p>Loading</p>;

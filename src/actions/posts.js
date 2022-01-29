@@ -20,7 +20,7 @@ function getPost(post) {
 	};
 }
 
-export function addPostToApi(title, description, body) {
+export function addPostToAPI(title, description, body) {
 	return async function(dispatch) {
 		const response = await axios.post(`${API_URL}`, {
 			title,
@@ -34,6 +34,24 @@ export function addPostToApi(title, description, body) {
 function addPost(post) {
 	return {
 		type: ADD_POST,
+		post
+	};
+}
+
+export function updatePostInAPI(id, title, description, body) {
+	return async function(dispatch) {
+		const response = await axios.put(`${API_URL}/${id}`, {
+			title,
+			description,
+			body
+		});
+		return dispatch(updatePost(response.data));
+	};
+}
+
+function updatePost(post) {
+	return {
+		type: UPDATE_POST,
 		post
 	};
 }

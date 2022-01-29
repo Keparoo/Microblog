@@ -2,7 +2,7 @@ import React from 'react';
 import PostForm from './PostForm';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addPostToApi } from '../actions/posts';
+import { addPostToAPI } from '../actions/posts';
 
 const NewPost = () => {
 	console.debug('NewPost');
@@ -11,7 +11,7 @@ const NewPost = () => {
 	const dispatch = useDispatch();
 
 	const add = ({ title, description, body }) => {
-		dispatch(addPostToApi(title, description, body));
+		dispatch(addPostToAPI(title, description, body));
 		history.push('/');
 	};
 
