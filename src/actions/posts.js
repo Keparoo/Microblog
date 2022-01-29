@@ -19,3 +19,21 @@ function getPost(post) {
 		post
 	};
 }
+
+export function addPostToApi(title, description, body) {
+	return async function(dispatch) {
+		const response = await axios.post(`${API_URL}`, {
+			title,
+			description,
+			body
+		});
+		return dispatch(addPost(response.data));
+	};
+}
+
+function addPost(post) {
+	return {
+		type: ADD_POST,
+		post
+	};
+}
