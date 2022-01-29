@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Comment({ deleteComment, text, id }) {
+	console.debug('Comment', text);
 	function handleDelete(evt) {
 		deleteComment(id);
 	}

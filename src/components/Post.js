@@ -35,6 +35,7 @@ const Post = () => {
 		},
 		[ dispatch, postId, post ]
 	);
+	console.log(post);
 
 	const toggleEdit = () => {
 		setIsEditing((edit) => !edit);

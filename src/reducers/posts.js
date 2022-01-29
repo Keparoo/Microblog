@@ -35,7 +35,7 @@ export default function rootReducer(state = {}, action) {
 				...state,
 				[action.postId]: {
 					...post,
-					comments: post.filter((c) => c.id !== action.commentId)
+					comments: post.comments.filter((c) => c.id !== action.commentId)
 				}
 			};
 		default:
