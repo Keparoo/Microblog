@@ -18,10 +18,8 @@ const Post = () => {
 
 	const [ isEditing, setIsEditing ] = useState(false);
 	const postId = Number(useParams().postId);
-	console.log('postId', postId);
 	const history = useHistory();
 	const post = useSelector((st) => st.posts[postId]);
-	console.log('Post at top', post);
 	const dispatch = useDispatch();
 
 	useEffect(
@@ -54,6 +52,7 @@ const Post = () => {
 	};
 
 	function addComment(text) {
+		console.debug('addComment', text);
 		dispatch(addCommentToAPI(postId, text));
 	}
 

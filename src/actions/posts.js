@@ -77,10 +77,11 @@ function deletePost(id) {
 	};
 }
 
-export function addCommentToAPI(postId, comment) {
+export function addCommentToAPI(postId, text) {
+	console.debug('addCommentToAPI', postId, text);
 	return async function(dispatch) {
 		const response = await axios.post(`${API_URL}/${postId}/comments/`, {
-			comment
+			text
 		});
 		return dispatch(addComment(postId, response.data));
 	};

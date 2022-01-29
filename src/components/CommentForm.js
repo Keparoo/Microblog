@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
 function CommentForm({ submitCommentForm }) {
-	const [ comment, setComment ] = useState();
+	const [ text, setText ] = useState('');
 
 	function handleSubmit(evt) {
 		evt.preventDefault();
-		submitCommentForm(comment);
-		setComment('');
+		submitCommentForm(text);
+		setText('');
 	}
 
 	function handleChange(evt) {
-		setComment(evt.target.value);
+		setText(evt.target.value);
 	}
 
 	return (
@@ -24,7 +24,7 @@ function CommentForm({ submitCommentForm }) {
 						size="50"
 						placeholder="New Comment"
 						className="form-control"
-						value={comment}
+						value={text}
 					/>
 				</div>
 				<button className="btn btn-primary">Add</button>
