@@ -1,6 +1,6 @@
 import {
 	FETCH_POST,
-	REMOVE_POST,
+	DELETE_POST,
 	ADD_POST,
 	UPDATE_POST
 } from '../actions/types';
@@ -16,6 +16,10 @@ export default function rootReducer(state = {}, action) {
 			return { ...state, [action.post.id]: { ...action.post } };
 		case UPDATE_POST:
 			return { ...state, [action.post.id]: { ...action.post } };
+		case DELETE_POST:
+			let posts = { ...state };
+			delete posts[action.postId];
+			return posts;
 		default:
 			return state;
 	}

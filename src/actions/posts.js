@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { REMOVE_POST, ADD_POST, UPDATE_POST, FETCH_POST } from './types';
+import { DELETE_POST, ADD_POST, UPDATE_POST, FETCH_POST } from './types';
 
 const API_URL =
 	process.env.REACT_APP_API_URL || 'http://localhost:5000/api/posts';
@@ -53,5 +53,19 @@ function updatePost(post) {
 	return {
 		type: UPDATE_POST,
 		post
+	};
+}
+
+export function deletePostFromAPI(id) {
+	return async function(dispatch) {
+		await axios.delete(`${API_URL}/${id}`);
+		return dispatch(deletePost(id));
+	};
+}
+
+function deletePost(id) {
+	return {
+		type: DELETE_POST,
+		id
 	};
 }

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
 	getPostFromAPI,
 	updatePostInAPI,
-	removePostFromAPI
+	deletePostFromAPI
 } from '../actions/posts';
 
 const Post = () => {
@@ -39,7 +39,7 @@ const Post = () => {
 	};
 
 	const deletePost = () => {
-		//remove post from API
+		dispatch(deletePostFromAPI(postId));
 		history.push('/');
 	};
 
