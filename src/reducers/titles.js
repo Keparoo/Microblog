@@ -1,6 +1,6 @@
 import {
 	FETCH_TITLES,
-	REMOVE_POST,
+	DELETE_POST,
 	ADD_POST,
 	UPDATE_POST
 } from '../actions/types';

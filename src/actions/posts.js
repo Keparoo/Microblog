@@ -1,6 +1,13 @@
 import axios from 'axios';
 
-import { DELETE_POST, ADD_POST, UPDATE_POST, FETCH_POST } from './types';
+import {
+	DELETE_POST,
+	ADD_POST,
+	UPDATE_POST,
+	FETCH_POST,
+	ADD_COMMENT,
+	DELETE_COMMENT
+} from './types';
 
 const API_URL =
 	process.env.REACT_APP_API_URL || 'http://localhost:5000/api/posts';
@@ -67,5 +74,37 @@ function deletePost(id) {
 	return {
 		type: DELETE_POST,
 		id
+	};
+}
+
+export function addCommentToAPI(postId, comment) {
+	return async function(dispatch) {
+		const response = await axios.post(`${API_URL}/${postId}/comments/`, {
+			comment
+		});
+		return dispatch(addComment(postId, response.data));
+	};
+}
+
+function addComment(postId, comment) {
+	return {
+		type: ADD_COMMENT,
+		postId,
+		comment
+	};
+}
+
+export function deleteCommentFromAPI(postId, commentId) {
+	return async function(dispatch) {
+		await axios.delete(`${API_URL}/${postId}/comments/${commentId}`);
+		return dispatch(deleteComment(postId, commentId));
+	};
+}
+
+function deleteComment(postId, commentId) {
+	return {
+		type: DELETE_COMMENT,
+		postId,
+		commentId
 	};
 }

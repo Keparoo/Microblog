@@ -2,7 +2,9 @@ import {
 	FETCH_POST,
 	DELETE_POST,
 	ADD_POST,
-	UPDATE_POST
+	UPDATE_POST,
+	ADD_COMMENT,
+	DELETE_COMMENT
 } from '../actions/types';
 // import TitleList from '../components/TitleList';
 
@@ -20,6 +22,22 @@ export default function rootReducer(state = {}, action) {
 			let posts = { ...state };
 			delete posts[action.postId];
 			return posts;
+		case ADD_COMMENT:
+			return {
+				...state,
+				[action.postId]: {
+					...post,
+					comments: [ ...post.comments, action.comment ]
+				}
+			};
+		case DELETE_COMMENT:
+			return {
+				...state,
+				[action.postId]: {
+					...post,
+					comments: post.filter((c) => c.id !== action.commentId)
+				}
+			};
 		default:
 			return state;
 	}

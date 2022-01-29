@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import PostForm from './PostForm';
-import PostDisplay from './PostDisplay';
-import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
 import {
 	getPostFromAPI,
 	updatePostInAPI,
-	deletePostFromAPI
+	deletePostFromAPI,
+	addCommentToAPI,
+	deleteCommentFromAPI
 } from '../actions/posts';
+import PostForm from './PostForm';
+import PostDisplay from './PostDisplay';
+import CommentForm from '../components/CommentForm';
+import CommentList from '../components/CommentList';
 
 const Post = () => {
 	console.debug('Post');
@@ -49,6 +53,14 @@ const Post = () => {
 		toggleEdit();
 	};
 
+	function addComment(text) {
+		dispatch(addCommentToAPI(postId, text));
+	}
+
+	function deleteComment(commentId) {
+		dispatch(deleteCommentFromAPI(postId, commentId));
+	}
+
 	if (!post) return <p>Loading</p>;
 
 	return (
@@ -63,6 +75,11 @@ const Post = () => {
 					deletePost={deletePost}
 				/>
 			)}
+			<section className="Post-comments mb-4">
+				<h4>Comments</h4>
+				<CommentList comments={post.comments} deleteComment={deleteComment} />
+				<CommentForm submitCommentForm={addComment} />
+			</section>
 		</div>
 	);
 };
