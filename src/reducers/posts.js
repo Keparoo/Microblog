@@ -4,7 +4,8 @@ import {
 	ADD_POST,
 	UPDATE_POST,
 	ADD_COMMENT,
-	DELETE_COMMENT
+	DELETE_COMMENT,
+	VOTE
 } from '../actions/types';
 // import TitleList from '../components/TitleList';
 
@@ -37,6 +38,11 @@ export default function rootReducer(state = {}, action) {
 					...post,
 					comments: post.comments.filter((c) => c.id !== action.commentId)
 				}
+			};
+		case VOTE:
+			return {
+				...state,
+				[action.postId]: { ...post, votes: action.votes }
 			};
 		default:
 			return state;

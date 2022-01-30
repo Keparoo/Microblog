@@ -6,7 +6,8 @@ import {
 	UPDATE_POST,
 	FETCH_POST,
 	ADD_COMMENT,
-	DELETE_COMMENT
+	DELETE_COMMENT,
+	VOTE
 } from './types';
 
 const API_URL =
@@ -107,5 +108,20 @@ function deleteComment(postId, commentId) {
 		type: DELETE_COMMENT,
 		postId,
 		commentId
+	};
+}
+
+export function sendVoteToAPI(postId, direction) {
+	return async function(dispatch) {
+		const response = await axios.post(`${API_URL}/${postId}/vote/${direction}`);
+		return dispatch(vote(postId, response.data.votes));
+	};
+}
+
+function vote(postId, votes) {
+	return {
+		type: VOTE,
+		postId,
+		votes
 	};
 }

@@ -6,7 +6,8 @@ import {
 	updatePostInAPI,
 	deletePostFromAPI,
 	addCommentToAPI,
-	deleteCommentFromAPI
+	deleteCommentFromAPI,
+	sendVoteToAPI
 } from '../actions/posts';
 import PostForm from './PostForm';
 import PostDisplay from './PostDisplay';
@@ -61,6 +62,10 @@ const Post = () => {
 		dispatch(deleteCommentFromAPI(postId, commentId));
 	}
 
+	function vote(direction) {
+		dispatch(sendVoteToAPI(postId, direction));
+	}
+
 	if (!post) return <p>Loading</p>;
 
 	return (
@@ -73,6 +78,7 @@ const Post = () => {
 					post={post}
 					toggleEdit={toggleEdit}
 					deletePost={deletePost}
+					castVote={vote}
 				/>
 			)}
 			<section className="Post-comments mb-4">

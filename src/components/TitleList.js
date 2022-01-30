@@ -3,6 +3,7 @@ import './TitleList.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTitlesFromAPI } from '../actions/titles';
+import { sendVoteToAPI } from '../actions/posts';
 
 const TitleList = () => {
 	console.debug('TitleList');
@@ -25,6 +26,10 @@ const TitleList = () => {
 		[ dispatch, isLoading ]
 	);
 
+	function vote(direction, id) {
+		dispatch(sendVoteToAPI(id, direction));
+	}
+
 	if (isLoading) return <b>Loading...</b>;
 
 	if (!isLoading && titles.length === 0) {
@@ -44,9 +49,17 @@ const TitleList = () => {
 								<i>{title.description}</i>
 							</div>
 						</div>
-						<div className="card-footer">
-							<small>Card footer</small>
-						</div>
+						<footer className="card-footer">
+							<small>{title.votes} votes</small>
+							<i
+								className="fas fa-thumbs-up text-success ml-2"
+								onClick={(evt) => vote('up', title.id)}
+							/>
+							<i
+								className="fas fa-thumbs-down text-danger ml-2"
+								onClick={(evt) => vote('down', title.id)}
+							/>
+						</footer>
 					</div>
 				</div>
 			))}
