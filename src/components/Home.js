@@ -1,13 +1,16 @@
 import React from 'react';
 import TitleList from './TitleList';
-// import Post from './Post';
+
+/* Home Page: renders a list of titles
+
+    Called by Routes
+*/
 
 const Home = () => {
 	console.debug('Home');
 
 	return (
 		<div>
-			<h1>Home</h1>
 			<TitleList />
 		</div>
 	);
