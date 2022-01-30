@@ -20,7 +20,6 @@ const API_URL =
 export function getPostFromAPI(id) {
 	return async function(dispatch) {
 		const response = await axios.get(`${API_URL}/${id}`);
-		console.log('resp', response.data);
 		return dispatch(getPost(response.data));
 	};
 }
