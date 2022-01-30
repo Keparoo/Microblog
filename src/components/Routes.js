@@ -4,6 +4,14 @@ import Post from './Post';
 import Home from './Home';
 import NewPost from './NewPost';
 
+/*  Routes to
+       Home "/"
+       Post "/:postId"
+       NewPost "/new"
+
+  Redirects to "/" if route doesn't exist
+*/
+
 const Routes = () => {
 	console.debug('Routes');
 

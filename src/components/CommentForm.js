@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 
-function CommentForm({ submitCommentForm }) {
+/* Comment Form
+
+    Inline form for adding a comment
+    This could be used for editing as well
+
+    Called by Post
+*/
+
+const CommentForm = ({ submitCommentForm }) => {
 	const [ text, setText ] = useState('');
 
-	function handleSubmit(evt) {
+	const handleSubmit = (evt) => {
 		evt.preventDefault();
 		submitCommentForm(text);
 		setText('');
-	}
+	};
 
-	function handleChange(evt) {
+	const handleChange = (evt) => {
 		setText(evt.target.value);
-	}
+	};
 
 	return (
 		<div>
@@ -31,6 +39,6 @@ function CommentForm({ submitCommentForm }) {
 			</form>
 		</div>
 	);
-}
+};
 
 export default CommentForm;

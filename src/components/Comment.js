@@ -1,10 +1,19 @@
 import React from 'react';
 
-function Comment({ deleteComment, text, id }) {
+/* Display a single comment
+
+    Comment can be deleted if icon is clicked
+    Deletion is handled by parent
+
+    Called by CommentList
+*/
+
+const Comment = ({ deleteComment, text, id }) => {
 	console.debug('Comment', text);
-	function handleDelete(evt) {
+
+	const handleDelete = (evt) => {
 		deleteComment(id);
-	}
+	};
 
 	return (
 		<div>
@@ -17,6 +26,6 @@ function Comment({ deleteComment, text, id }) {
 			</p>
 		</div>
 	);
-}
+};
 
 export default Comment;

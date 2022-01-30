@@ -3,7 +3,15 @@ import './App.css';
 import { NavLink } from 'react-router-dom';
 import Routes from './Routes';
 
-function App() {
+/* Blog application
+    Renders Header with links to
+      Blog (home)
+      Add a new Post (New Post Form)
+
+    App calls Routes for routing
+*/
+
+const App = () => {
 	console.debug('App');
 
 	return (
@@ -24,6 +32,6 @@ function App() {
 			<Routes />
 		</div>
 	);
-}
+};
 
 export default App;
