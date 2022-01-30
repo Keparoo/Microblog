@@ -31,7 +31,7 @@ const Post = () => {
 	console.debug('Post');
 
 	const [ isEditing, setIsEditing ] = useState(false);
-	const postId = Number(useParams().postId);
+	const postId = +useParams().postId;
 	const history = useHistory();
 	const post = useSelector((state) => state.posts[postId]);
 	const dispatch = useDispatch();

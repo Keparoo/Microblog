@@ -13,6 +13,10 @@ import {
 const API_URL =
 	process.env.REACT_APP_API_URL || 'http://localhost:5000/api/posts';
 
+/* Handle async API calls for all post related functions
+  */
+
+// Get a post from from the API by id and Redux store
 export function getPostFromAPI(id) {
 	return async function(dispatch) {
 		const response = await axios.get(`${API_URL}/${id}`);
@@ -28,6 +32,7 @@ function getPost(post) {
 	};
 }
 
+// Add a new post to the API and Redux store
 export function addPostToAPI(title, description, body) {
 	return async function(dispatch) {
 		const response = await axios.post(`${API_URL}`, {
@@ -46,6 +51,7 @@ function addPost(post) {
 	};
 }
 
+// Update a current post in the API by id and Redux store
 export function updatePostInAPI(id, title, description, body) {
 	return async function(dispatch) {
 		const response = await axios.put(`${API_URL}/${id}`, {
@@ -64,6 +70,7 @@ function updatePost(post) {
 	};
 }
 
+// Delete a post from the API by id and Redux store
 export function deletePostFromAPI(id) {
 	return async function(dispatch) {
 		await axios.delete(`${API_URL}/${id}`);
@@ -78,6 +85,7 @@ function deletePost(id) {
 	};
 }
 
+// Add a comment to a post in the API and Redux store
 export function addCommentToAPI(postId, text) {
 	console.debug('addCommentToAPI', postId, text);
 	return async function(dispatch) {
@@ -96,6 +104,7 @@ function addComment(postId, comment) {
 	};
 }
 
+// Delete a comment from a post in the API and Redux store
 export function deleteCommentFromAPI(postId, commentId) {
 	return async function(dispatch) {
 		await axios.delete(`${API_URL}/${postId}/comments/${commentId}`);
@@ -111,6 +120,7 @@ function deleteComment(postId, commentId) {
 	};
 }
 
+// Send an up/down vote for a post to the API and Redux store
 export function sendVoteToAPI(postId, direction) {
 	return async function(dispatch) {
 		const response = await axios.post(`${API_URL}/${postId}/vote/${direction}`);

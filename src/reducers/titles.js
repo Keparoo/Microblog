@@ -11,6 +11,9 @@ const sortByVote = (posts) => {
 	return posts.sort((a, b) => b.votes - a.votes);
 };
 
+/* Update Redux state for title related dispatches
+*/
+
 export default function rootReducer(state = [], action) {
 	switch (action.type) {
 		case FETCH_TITLES:
@@ -24,8 +27,10 @@ export default function rootReducer(state = [], action) {
 					description: action.post.description
 				}
 			]);
+
 		case DELETE_POST:
 			return state.filter((t) => t.id !== action.id);
+
 		case UPDATE_POST:
 			return state.map(
 				(title) =>
@@ -37,6 +42,7 @@ export default function rootReducer(state = [], action) {
 							}
 						: title
 			);
+
 		case VOTE:
 			return sortByVote(
 				state.map(
@@ -46,6 +52,7 @@ export default function rootReducer(state = [], action) {
 							: title
 				)
 			);
+
 		default:
 			return state;
 	}

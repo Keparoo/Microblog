@@ -5,6 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchTitlesFromAPI } from '../actions/titles';
 import { sendVoteToAPI } from '../actions/posts';
 
+/* Render list of blog titles sorted by number of votes: 
+      Highest vote count first
+*/
+
 const TitleList = () => {
 	console.debug('TitleList');
 
@@ -13,7 +17,7 @@ const TitleList = () => {
 	const [ isLoading, setIsLoading ] = useState(true);
 
 	useEffect(
-		function() {
+		() => {
 			async function fetchTitle() {
 				await dispatch(fetchTitlesFromAPI());
 				setIsLoading(false);
@@ -26,12 +30,14 @@ const TitleList = () => {
 		[ dispatch, isLoading ]
 	);
 
-	function vote(direction, id) {
+	const vote = (direction, id) => {
 		dispatch(sendVoteToAPI(id, direction));
-	}
+	};
 
+	// If List not loaded, render loading message
 	if (isLoading) return <b>Loading...</b>;
 
+	// If no posts in database, render message
 	if (!isLoading && titles.length === 0) {
 		return <b>No posts yet. Please add a post!</b>;
 	}

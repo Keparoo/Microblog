@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-// import uuidv4 from "uuid/v4";
 import './NewPost.css';
+
+/* Render New/Edit post form
+
+    Call the parent (POST) on edit or cancel click
+*/
 
 const PostForm = ({
 	post = { title: '', description: '', body: '' },
@@ -15,12 +19,13 @@ const PostForm = ({
 		body: post.body
 	});
 
+	// Handle changes in the form
 	function handleChange(e) {
 		const { name, value } = e.target;
 		setForm((f) => ({ ...f, [name]: value }));
 	}
 
-	// addPost({ ...form, id: uuidv4() });
+	// Handle submit: call parent function save
 	function handleSubmit(e) {
 		e.preventDefault();
 		save({ ...form });

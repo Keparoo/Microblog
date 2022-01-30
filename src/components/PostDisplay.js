@@ -1,6 +1,12 @@
 import React from 'react';
 import './PostDisplay.css';
 
+/* Display the post
+
+    render edit and delete icons and call parent handle functions
+    render vote count and up/down icons. call parent on icon click
+*/
+
 const PostDisplay = ({ post, toggleEdit, deletePost, castVote }) => {
 	console.debug('PostDisplay');
 
